@@ -1,2 +1,0 @@
-User-agent: *
-Sitemap: https://z69yuan.gitee.io/sitemap.xml
