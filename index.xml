@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>69yuan - A plain coder</title>
+    <title>69yuan - A plain android coder</title>
     <link>https://z69yuan.gitee.io/</link>
-    <description>Recent content on 69yuan - A plain coder</description>
+    <description>Recent content on 69yuan - A plain android coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 18 May 2022 06:57:59 +0800</lastBuildDate><atom:link href="https://z69yuan.gitee.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 May 2022 11:25:50 +0800</lastBuildDate><atom:link href="https://z69yuan.gitee.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello World</title>
+      <link>https://z69yuan.gitee.io/posts/hello-world/</link>
+      <pubDate>Wed, 18 May 2022 11:25:33 +0800</pubDate>
+      
+      <guid>https://z69yuan.gitee.io/posts/hello-world/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>My Second Blog</title>
       <link>https://z69yuan.gitee.io/post/my-second-blog/</link>
       <pubDate>Wed, 18 May 2022 06:57:59 +0800</pubDate>
       
       <guid>https://z69yuan.gitee.io/post/my-second-blog/</guid>
-      <description></description>
+      <description>Hahahah</description>
     </item>
     
     <item>

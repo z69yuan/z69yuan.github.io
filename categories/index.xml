@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on 69yuan - A plain coder</title>
+    <title>Categories on 69yuan - A plain android coder</title>
     <link>https://z69yuan.gitee.io/categories/</link>
-    <description>Recent content in Categories on 69yuan - A plain coder</description>
+    <description>Recent content in Categories on 69yuan - A plain android coder</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language><atom:link href="https://z69yuan.gitee.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 18 May 2022 06:57:59 +0800</lastBuildDate><atom:link href="https://z69yuan.gitee.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>杂技浅尝</title>
+      <link>https://z69yuan.gitee.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/</link>
+      <pubDate>Wed, 18 May 2022 06:57:59 +0800</pubDate>
+      
+      <guid>https://z69yuan.gitee.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

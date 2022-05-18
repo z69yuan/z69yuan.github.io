@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 69yuan - A plain coder</title>
+    <title>Posts on 69yuan - A plain android coder</title>
     <link>https://z69yuan.gitee.io/post/</link>
-    <description>Recent content in Posts on 69yuan - A plain coder</description>
+    <description>Recent content in Posts on 69yuan - A plain android coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 18 May 2022 06:57:59 +0800</lastBuildDate><atom:link href="https://z69yuan.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <pubDate>Wed, 18 May 2022 06:57:59 +0800</pubDate>
       
       <guid>https://z69yuan.gitee.io/post/my-second-blog/</guid>
-      <description></description>
+      <description>Hahahah</description>
     </item>
     
     <item>
