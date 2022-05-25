@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MacOs编译AndroidQ - 69yuan - A plain android coder</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="69yuan" /><meta name="description" content="一、准备工作 1.1 系统介绍 Mac系统版本： 12.3.1 内存： 16GB **CPU: ** 4核i5 2GHz 磁盘：180GB 笔者曾在 Ubuntu中编译该版本，最后占用磁盘空间为154GB" /><meta name="keywords" content="Android, Developer, Linux" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.99.0 with theme even" />
+
+
+<link rel="canonical" href="https://z69yuan.gitee.io/post/frameworks/01_macos%E7%BC%96%E8%AF%91android10/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="MacOs编译AndroidQ" />
+<meta property="og:description" content="一、准备工作 1.1 系统介绍 Mac系统版本： 12.3.1 内存： 16GB **CPU: ** 4核i5 2GHz 磁盘：180GB 笔者曾在 Ubuntu中编译该版本，最后占用磁盘空间为154GB" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://z69yuan.gitee.io/post/frameworks/01_macos%E7%BC%96%E8%AF%91android10/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-26T07:36:38+08:00" />
+<meta property="article:modified_time" content="2022-05-26T07:36:38+08:00" />
+
+<meta itemprop="name" content="MacOs编译AndroidQ">
+<meta itemprop="description" content="一、准备工作 1.1 系统介绍 Mac系统版本： 12.3.1 内存： 16GB **CPU: ** 4核i5 2GHz 磁盘：180GB 笔者曾在 Ubuntu中编译该版本，最后占用磁盘空间为154GB"><meta itemprop="datePublished" content="2022-05-26T07:36:38+08:00" />
+<meta itemprop="dateModified" content="2022-05-26T07:36:38+08:00" />
+<meta itemprop="wordCount" content="1707">
+<meta itemprop="keywords" content="framwork,AOSP," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MacOs编译AndroidQ"/>
+<meta name="twitter:description" content="一、准备工作 1.1 系统介绍 Mac系统版本： 12.3.1 内存： 16GB **CPU: ** 4核i5 2GHz 磁盘：180GB 笔者曾在 Ubuntu中编译该版本，最后占用磁盘空间为154GB"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">69yuan</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">69yuan</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MacOs编译AndroidQ</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-05-26 </span>
+        <div class="post-category">
+            <a href="/categories/framwork/"> framwork </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#一准备工作">一、准备工作</a></li>
+            <li><a href="#二源码下载">二、源码下载</a></li>
+            <li><a href="#三源码编译">三、源码编译</a></li>
+            <li><a href="#四刷机">四、刷机</a></li>
+            <li><a href="#五参考链接">五、参考链接</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h3 id="一准备工作">一、准备工作</h3>
+<h4 id="11-系统介绍">1.1 系统介绍</h4>
+<p><strong>Mac系统版本：</strong> 12.3.1</p>
+<p><strong>内存：</strong> 16GB</p>
+<p>**CPU: ** 4核i5 2GHz</p>
+<p><strong>磁盘</strong>：<strong>180GB</strong></p>
+<blockquote>
+<p>笔者曾在 Ubuntu中编译该版本，最后占用磁盘空间为154GB。具体请查看 <a href="https://blog.csdn.net/dirksmaller/article/details/112761115?spm=1001.2014.3001.5501">Ubuntu16.04编译Android10源码并刷机Pixel</a></p>
+</blockquote>
+<h4 id="12-aosp版本选择">1.2 AOSP版本选择</h4>
+<ol>
+<li><a href="https://www.cnblogs.com/schips/p/the_meaning_of_android_building_type.html">编译选择user、user-debug、eng的区别</a></li>
+</ol>
+<h4 id="13-磁盘准备">1.3 磁盘准备</h4>
+<p>MacOS会在一个保留大小写，但是不区分大小的文件系统中运行。git不支持。所以需要开辟一块磁盘空间，并重新设计其格式。</p>
+<p>在Mac Pro中，格式一块大小为 175GB的磁盘。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hdiutil create -type SPARSE -fs <span class="s1">&#39;Case-sensitive Journaled HFS+&#39;</span> -size 175g ~/Downloans/android10.dmg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行命令后：</p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e09475431296326e3.png" alt="image-20220525151140669"></p>
+<p>如果后期需要调整磁盘空间，可以使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hdiutil resize -size &lt;new-size-you-want&gt;g ~/android.dmg.sparseimage
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>挂载磁盘：</strong> 可以将挂架命令封装为一个函数，放在shell中，便于后面使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># mount the android file image</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> mountAndroid <span class="o">{</span> hdiutil attach ~/android.dmg -mountpoint /Volumes/android<span class="p">;</span> <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>挂载出错：</strong></p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e09475431296326d1.png" alt="image-20220525152021220"></p>
+<p>解决办法：</p>
+<p><a href="https://blog.csdn.net/fukai7722/article/details/119039539">macOS打开dmg安装包提示 “资源忙”的解决方案</a></p>
+<blockquote>
+<p>将disk相关的任务杀掉。</p>
+</blockquote>
+<h3 id="二源码下载">二、源码下载</h3>
+<h4 id="21-python27安装可选">2.1 Python2.7安装(可选)</h4>
+<p>[python2.7 安装包](链接: <a href="https://pan.baidu.com/s/1_rxHpvv10FTOm77pl83hxQ">https://pan.baidu.com/s/1_rxHpvv10FTOm77pl83hxQ</a> 提取码: ndl6
+&ndash;来自百度网盘超级会员v6的分享)</p>
+<h4 id="22-repo工具下载安装">2.2 repo工具下载安装</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir ~/bin
+</span></span><span class="line"><span class="cl"><span class="nv">PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span>
+</span></span><span class="line"><span class="cl">curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o ~/bin/repo
+</span></span><span class="line"><span class="cl">chmod +x repo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于repo指向的google的源码镜像，考虑到网速的问题，要将其换为国内镜像：</p>
+<p>方式一： 在 ~/.bash_profile中新增：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">REPO_URL</span><span class="o">=</span><span class="s1">&#39;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行 source ~/.bash_profile</p>
+<p>方式二：</p>
+<p>修改 repo文件： 将</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">REPO_URL</span> <span class="o">=</span> <span class="s1">&#39;https://gerrit.googlesource.com/git-repo&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>改为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">REPO_URL</span> <span class="o">=</span> <span class="s1">&#39;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="23-源码下载">2.3 源码下载</h4>
+<ol>
+<li>
+<p>打开termal，将目录切换到 <strong>挂载之后的自盘目录</strong>(/Volumes/android10/)</p>
+</li>
+<li>
+<p>创建源码存放的文件夹 WORKING_DIRECTORY,并进入该目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir WORKING_DIRECTORY
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> WORKING_DIRECTORY
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>初始化aosp仓库（笔者要下载的是android-10.0.0_r1）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">repo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b android-10.0.0_r1  
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>开始下载（开启4个线程去同步源码）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">repo sync -j4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同步阶段，有一个同步进度：</p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e09475431296326e0.png" alt="image-20220525173211144"></p>
+<p>同步代码，花去了2.5h</p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e094754312963270f.png" alt="image-20220525185746740"></p>
+<p>源码同步完成后，占用磁盘空间如下（大概101GB）：</p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e09475431296326e8.png" alt="image-20220525195230980"></p>
+</li>
+</ol>
+<h3 id="三源码编译">三、源码编译</h3>
+<h4 id="31-编译环境准备">3.1 编译环境准备</h4>
+<p><strong>1. 驱动下载：</strong></p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e0947543129632712.png" alt="image-20220525173608954"></p>
+<p>为什么选择这个驱动，可以参考<a href="https://blog.csdn.net/dirksmaller/article/details/112761115?spm=1001.2014.3001.5501">笔者另一篇文章</a></p>
+<p><strong>2. 安装xcode命令行工具</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">xcode-select --install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>3.安装<a href="https://www.macports.org/install.php">MacPorts工具</a></strong></p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e09475431296327e0.png" alt="image-20220525194722412"></p>
+<p>并在.bash_profile中添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/opt/local/bin:<span class="nv">$PATH</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>source ~/.bash_profile</p>
+<p><strong>4.安装依赖库</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">POSIXLY_CORRECT</span><span class="o">=</span><span class="m">1</span> sudo port install gmake libsdl git gnupg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果是Mac OSX v10.4 还需要安装bison</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">POSIXLY_CORRECT</span><span class="o">=</span><span class="m">1</span> sudo port install bison
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="32-编译">3.2 编译</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">//1. 建立android-q开发分支：
+</span></span><span class="line"><span class="cl">repo start android_q --all
+</span></span><span class="line"><span class="cl"><span class="nb">source</span> build/envsetup.sh
+</span></span><span class="line"><span class="cl">lunch
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// 接下来 等待30s，等待终端弹出 可编译的版本号，然后进行选择
+</span></span><span class="line"><span class="cl">// saifish****userdebug 对应的16
+</span></span><span class="line"><span class="cl"><span class="m">16</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">make -j8 // 8代表你想要开启的线程数，笔者电脑是4核8线程
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>经过漫长的等待(大约3.5小时)，终于编译成功了：</p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e09475431296327d0.png" alt="image-20220526065034126"></p>
+<p>编译后，整个磁盘占用情况如下(165GB)：</p>
+<p><img src="https://pic.imgdb.cn/item/628ebf5e0947543129632801.png" alt="image-20220526065202930"></p>
+<h4 id="33-编译遇到的坑">3.3 编译遇到的坑</h4>
+<h5 id="331-xcode-sdk-版本选择">3.3.1 Xcode SDK 版本选择</h5>
+<p>由于笔者系统版本比较新(12.3) , 但是aosp需要的SDK版本，最高到10.14，之前的解决版本，就是在支持的版本上新增12.3 。 但是经过尝试，发现不断出错。因此 选择<strong>下载一个10.14的SDK， 并将系统支持的最低SDK版本改为10.14</strong>。</p>
+<ol>
+<li>
+<p>下载一个<a href="https://github.com/phracker/MacOSX-SDKs/releases">10.14SDK</a></p>
+</li>
+<li>
+<p>修改系统支持的最小SDK版本</p>
+<p>通过<strong>xcode</strong>修改 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/info.plist文件</p>
+<p>由于该文件目录和文件有<strong>权限限制</strong> ，需要先复制到当前用户有权限修改的目录下，然后修改，待完成修改后，复制回去：</p>
+<p>如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cp /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/info.plist ~/Downloads
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://pic.imgdb.cn/item/628ebf5e0947543129632804.png" alt="image-20220526071438748"></p>
+<h5 id="332-failed-outtargetproductsailfishobjetctreble_sepolicy_tests_270_intermediatestreble_sepolicy_tests_270">3.3.2 FAILED: out/target/product/sailfish/obj/ETC/treble_sepolicy_tests_27.0_intermediates/treble_sepolicy_tests_27.0</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim system/sepolicy/tests/Android.bp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将stl: &ldquo;libc++_static&rdquo; 注释掉</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">static_libs: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;libbase&#34;</span>,
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;libsepol&#34;</span>,
+</span></span><span class="line"><span class="cl">   <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">   // stl: <span class="s2">&#34;libc++_static&#34;</span>,
+</span></span><span class="line"><span class="cl">   sanitize: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">       never: true,
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>,
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="四刷机">四、刷机</h3>
+<p><a href="https://source.android.google.cn/setup/build/running?hl=zh-cn">刷写设备的官方文档</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">ANDROID_PRODUCT_OUT</span><span class="o">=</span>/Volumes/android10/WORKING_DIRECTORY/out/target/product/sailfish
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#解锁</span>
+</span></span><span class="line"><span class="cl">fastboot flashing unlock    <span class="c1">#对于新款设备（2015 年及之后发布的设备）</span>
+</span></span><span class="line"><span class="cl">fastboot oem unlock         <span class="c1">#对于老款设备（2014 年及之前发布的设备）</span>
+</span></span><span class="line"><span class="cl">fastboot flashing unlock_critical     <span class="c1">#这条命令只有我这个奇葩机型需要，不过别的机型可能需要别的，哈哈哈</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#注：很多设备可能只需第一条命令fastboot flashing unlock即可</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">adb reboot bootloader     <span class="c1">#进入fastboot模式（或长按Volume Down + Power键）</span>
+</span></span><span class="line"><span class="cl">fastboot flashall -w      <span class="c1">#刷机</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="五参考链接">五、参考链接</h3>
+<ol>
+<li><a href="https://blog.csdn.net/w__y__q/article/details/121570143">mac下编译android源码避坑指南（新）</a></li>
+<li><a href="http://t.zoukankan.com/lanjiabin-p-12807342.html">MacBook下载和编译Android AOSP源码</a></li>
+<li><a href="https://www.csdn.net/tags/MtTagg4sODk1My1ibG9n.html"><em>Mac</em> <strong>OS10.12</strong> <em>编译Android源码</em><strong>8.1</strong></a></li>
+<li><a href="https://www.jianshu.com/p/37f5f826b642">macOS Big Sur 编译Android11.0源码过程总结</a></li>
+<li><a href="https://source.android.google.cn/source/initializing?hl=zh-cn#creating-a-case-sensitive-disk-image">Android官网 编译AOSP</a></li>
+<li><a href="https://www.jianshu.com/p/37f5f826b642">macOS Big Sur 编译Android11.0源码过程总结</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">69yuan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2022-05-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/framwork/">framwork</a>
+          <a href="/tags/aosp/">AOSP</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/tools/hugo%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+            <span class="next-text nav-default">Hugo的简单使用</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:z69yuan@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/z69yuan" class="iconfont icon-github" title="github"></a>
+  <a href="https://z69yuan.gitee.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>69yuan</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

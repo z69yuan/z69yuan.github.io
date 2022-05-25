@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>framwork on 69yuan - A plain android coder</title>
+    <link>https://z69yuan.gitee.io/tags/framwork/</link>
+    <description>Recent content in framwork on 69yuan - A plain android coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 26 May 2022 07:36:38 +0800</lastBuildDate><atom:link href="https://z69yuan.gitee.io/tags/framwork/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MacOs编译AndroidQ</title>
+      <link>https://z69yuan.gitee.io/post/frameworks/01_macos%E7%BC%96%E8%AF%91android10/</link>
+      <pubDate>Thu, 26 May 2022 07:36:38 +0800</pubDate>
+      
+      <guid>https://z69yuan.gitee.io/post/frameworks/01_macos%E7%BC%96%E8%AF%91android10/</guid>
+      <description>一、准备工作 1.1 系统介绍 Mac系统版本： 12.3.1 内存： 16GB **CPU: ** 4核i5 2GHz 磁盘：180GB 笔者曾在 Ubuntu中编译该版本，最后占用磁盘空间为154GB</description>
+    </item>
+    
+  </channel>
+</rss>
